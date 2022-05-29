@@ -1,4 +1,3 @@
-import java.io.CharArrayReader;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
@@ -18,7 +17,7 @@ public class MainClass {
         for (int i = 0; i < cars.length; i++) {
             new Thread(cars[i]).start();
         }
-
+        // Ждем пока все приготовятся
         try {
             readyCyclicBarrier.await();
         } catch (InterruptedException e) {
@@ -28,6 +27,8 @@ public class MainClass {
         }
 
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка началась!!!");
+
+        // Ждем пока все доедут
         try {
             readyCyclicBarrier.await();
         } catch (InterruptedException e) {
