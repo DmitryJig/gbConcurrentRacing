@@ -1,5 +1,4 @@
 import java.util.concurrent.BrokenBarrierException;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
 
 public class Car implements Runnable {
@@ -15,6 +14,7 @@ public class Car implements Runnable {
     public int getSpeed() {
         return speed;
     }
+
     private CyclicBarrier readyCyclicBarrier;
 
     public Car(Race race, int speed, CyclicBarrier readyCyclicBarrier) {
@@ -41,6 +41,7 @@ public class Car implements Runnable {
             race.getStages().get(i).go(this);
         }
 
+        // отправляем в класс гонка имя
         race.printWinner(name);
 
         // еще один способ, узнаем позицию гонщика и отмечаемся что окончили гонку одновременно,
